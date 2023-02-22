@@ -1,0 +1,9 @@
+/**
+ * 
+ */
+/**
+ * @author Pierrick
+ *
+ */
+module FantasyGame {
+}
