@@ -53,8 +53,6 @@ tab[0].attaquer();
 		// un troisième entre 0 1 pour le mage s'il attaque ou s'il se soigne 
 		
 		
-		
-		
 	    Personnage[] tab = new Personnage[5];
 		tab[0] = new Guerrier("Humain", "Garen", "Demacia", 200, 10);
 		tab[1] = new Guerrier("Humain", "Darius", "Noxus", 300, 10);
@@ -67,42 +65,15 @@ tab[0].attaquer();
 	    Personnage adversaire = tab[r.nextInt(5)];
 	    Personnage lanceur = tab[r.nextInt(5)];
 	    
+	    
 	   // System.out.println(lanceur.getNom());
 	   //System.out.println(adversaire.getNom());
 	    
 	    while( lanceur == adversaire) {
 	    	adversaire = tab[r.nextInt(5)];  
 	  } 
-	   // System.out.println(" ---- le lanceur de l'attaque est " + lanceur.getNom());
-	   // System.out.println(" ---- l'adversaire de l'attaque est : " + adversaire.getNom());
-	    
 	    int tour = 0;
 	    
-	   
-	    /*
-	    
-	     
-	    do {
-	    	tour = tour + 1;
-	    	System.out.println("vous etes au tour(s) " + tour + "\nPour ce tour : ");
-	    	System.out.println(" ---- le lanceur de l'attaque est  : " + lanceur.getNom());
-		    System.out.println(" ---- l'adversaire de l'attaque est : " + adversaire.getNom());
-	    	
-	    	if (lanceur instanceof Berseker) {
-		    	((Berseker) lanceur).attaquer(adversaire);
-		    	} else if (lanceur instanceof Healer) {
-		    		((Healer) lanceur).soigner(lanceur);
-		    	};
-	    	
-	    	Personnage tmp = adversaire; 
-	    	adversaire = lanceur; 
-	    	lanceur = tmp;
-	    	
-	    } while (((lanceur.getPtsVie() >= 0) && (adversaire.getPtsVie() >= 0)));
-	    
-	    
-	   
-	    */
 	    
 	    while (((lanceur.getPtsVie() > 0) && (adversaire.getPtsVie() > 0))) {
 	    	
@@ -111,35 +82,42 @@ tab[0].attaquer();
 	    	System.out.println(" ---- le lanceur de l'attaque est  : " + lanceur.getNom());
 		    System.out.println(" ---- l'adversaire de l'attaque est : " + adversaire.getNom());
 	    	
-	    	if (lanceur instanceof Berseker) {
-		    	((Berseker) lanceur).attaquer(adversaire);
-		    	} else if (lanceur instanceof Healer) {
-		    		((Healer) lanceur).soigner(lanceur);
-		    	}
-	    	
-	    	Personnage tmp = adversaire; 
+		    
+		    if (lanceur.getptsAction() == 0) {
+                System.out.println(lanceur.getNom() + " " + lanceur.getPrenom() + " n'a plus de points d'action, il est trop fatigue !\n"
+                        + "Il passe son tour !!");
+            } else { 
+                int actionMage = r.nextInt(2) + 1;
+                if (lanceur instanceof Mage && actionMage == 1 ) {
+                        ((Berseker) lanceur).attaquer(adversaire);
+                } else if (lanceur instanceof Mage && actionMage == 2){
+                    ((Healer) lanceur).soigner(lanceur);
+                } else if (lanceur instanceof Berseker) {
+                    ((Berseker) lanceur).attaquer(adversaire);
+                } 
+                else if (lanceur instanceof Healer) {
+                    ((Healer) lanceur).soigner(lanceur);
+                }
+            }
+
+		    Personnage tmp = adversaire; 
 	    	adversaire = lanceur; 
 	    	lanceur = tmp;
 	    	
-	    	
-	    	if (adversaire.getPtsVie() <= 0) {
-	    		System.out.println("l'adversaire " + 
-	    				adversaire.getNom() + " " + 
-	    				adversaire.getPrenom() + 
-	    				" a ete defait");
-	    		System.out.println(lanceur.getNom() + " " + lanceur.getPrenom() + " a vaincu !" );
-	    	} else {
-	    		System.out.println("le lanceur " + 
-	    				lanceur.getNom() + " " + 
-	    				lanceur.getPrenom() + 
-	    				" a ete defait");
-	    		System.out.println(adversaire.getNom() + " " + adversaire.getPrenom() + " a vaincu !" );
-	    	}
 	    }
 	    
-	    
-	    
-		
-		
+	    if (adversaire.getPtsVie() <= 0) {
+    		System.out.println("l'adversaire " + 
+    				adversaire.getNom() + " " + 
+    				adversaire.getPrenom() + 
+    				" a ete defait");
+    		System.out.println(lanceur.getNom() + " " + lanceur.getPrenom() + " a vaincu !" );
+    	} else {
+    		System.out.println("le lanceur " + 
+    				lanceur.getNom() + " " + 
+    				lanceur.getPrenom() + 
+    				" a ete defait");
+    		System.out.println(adversaire.getNom() + " " + adversaire.getPrenom() + " a vaincu !" );
+    	}
 	}
 }
