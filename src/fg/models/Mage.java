@@ -1,10 +1,10 @@
 package fg.models;
 
-public class Mage extends Personnage {
+public class Mage extends Personnage implements Berseker, Healer{
 
 	
-	public Mage(String nom, String prenom, int ptsVie, int ptsMana) {
-		super(nom, prenom, ptsVie, ptsMana);
+	public Mage(String race, String nom, String prenom, int ptsVie, int ptsAction) {
+		super(race, nom, prenom, ptsVie, ptsAction);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -18,5 +18,17 @@ public class Mage extends Personnage {
 	public void cri() {
 		super.cri();
 		System.out.println("Par la magie nous vaincrons !");
+	}
+
+	@Override
+	public void soigner(int ptsVie) {
+		// TODO Auto-generated method stub
+		ptsVie 
+	}
+
+	@Override
+	public void attaquer() {
+		// TODO Auto-generated method stub
+		
 	}
 }

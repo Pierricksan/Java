@@ -2,9 +2,16 @@ package fg.models;
 
 public class Personnage {
 
-	public String nom, prenom;
-	public int ptsVie, ptsMana;
+	protected String nom, prenom, race;
+	protected int ptsVie, ptsAction;
 	
+	public String getRace() {
+		return race;
+	}
+
+	public void setRace(String race) {
+		this.race = race;
+	}
 	
 	public String getNom() {
 		return nom;
@@ -13,29 +20,28 @@ public class Personnage {
 	public String getPrenom() {
 		return prenom;
 	}
-
+	
 	public int getPtsVie() {
 		return ptsVie;
 	}
 
-	public int getPtsMana() {
-		return ptsMana;
+	public int getptsAction() {
+		return ptsAction;
 	}
 
-	public Personnage(String nom, String prenom, int ptsVie, int ptsMana) {
+	public Personnage(String race, String nom, String prenom, int ptsVie, int ptsAction) {
+		this.race = race;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.ptsVie = ptsVie; 
-		this.ptsMana = ptsMana; 
+		this.ptsAction = ptsAction; 
 	}
 	public void stats() {
 		System.out.println(
-				"Je suis " + nom + " " + prenom 
-				+ " et je possede " 
-				+ ptsVie 
-				+ " points de vie ainsi que "
-				+ ptsMana 
-				+ " points de mana ");
+				"PtsVie : " + ptsVie + "\n" + 
+				
+				
+				);
 	}
 	public void cri(){
 		System.out.println("Merci de m'avoir invoque !");

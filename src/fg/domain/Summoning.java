@@ -1,9 +1,6 @@
 package fg.domain;
 
-import fg.models.Guerrier;
-import fg.models.Mage;
-import fg.models.Personnage;
-import fg.models.Soigneur;
+import fg.models.*;
 
 public class Summoning {
 
@@ -22,8 +19,8 @@ public class Summoning {
 		
 		wizard.cri();
 		wizard.afficherStats();
-		*/
 		
+			
 		Personnage[] tab = new Personnage[10];
 		
 		tab[0] = new Guerrier("Xin", "Zhao", 2000, 500);
@@ -37,11 +34,22 @@ public class Summoning {
 		tab[8] = new Soigneur("Soraka", "Banane", 2500, 3000);
 		tab[9] = new Soigneur("Haruno", "Sakura", 2000, 3000);
 		
+tab[0].attaquer();
+		
 		for (Personnage element : tab) {
 			
 			element.stats();
 			element.cri();
 			
 		}
+		*/
+		
+		Guerrier Garen = new Guerrier("Humain", "Garen", "Demacia", 200, 10);
+		Guerrier Darius = new Guerrier("Humain", "Darius", "Noxus", 300, 10);
+		
+		Garen.attaquer(Darius);
+		Darius.stats();
+		Garen.stats();
+	
 	}
 }
