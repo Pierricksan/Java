@@ -22,7 +22,7 @@ public class Summoning {
 		// initialisation des valeurs randoms/aléatoires
 		// utilisation d'une class Math random
 		Random r = new Random();
-		int tour = 0;
+
 		// selection pour le premier tour
 	    Personnage adversaire = tab[r.nextInt(5)];
 	    Personnage lanceur = tab[r.nextInt(5)];
@@ -32,10 +32,8 @@ public class Summoning {
 	    	adversaire = tab[r.nextInt(5)];  
 	    } 
 	    // ANNONCE DEBUT DU JEU 
-	    Display.affichageWelcome(lanceur.getNom(), 
-	    				lanceur.getPrenom(),
-	    				adversaire.getNom(),
-	    				adversaire.getPrenom());
+	    Display.affichageWelcome(lanceur, adversaire);
+	    
 	    // simulation d'un combat 
 	    Simulation.mortalKombat(lanceur, adversaire);
 	    
