@@ -13,8 +13,8 @@ public class Guerrier extends Personnage implements Berseker {
 	
 	@Override
 	public int attaquer(Personnage adversaire) {
-		System.out.println("Tourbilol");
-		int attaque = 50;
+		System.out.println("prends donc mon Tourbilol");
+		int attaque = 125;
 		int ptsVieRestant = adversaire.ptsVie - attaque;
 		ptsAction -= 1;
 		System.out.println( 

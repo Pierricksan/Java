@@ -2,6 +2,6 @@ package fg.models;
 
 public interface Healer {
 
-	int soigner();
+	int soigner(Personnage lanceur);
 	
 }

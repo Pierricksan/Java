@@ -38,13 +38,18 @@ public class Personnage {
 	}
 	public void stats() {
 		System.out.println(
+				"Race : " + race + "\n" +
+				"Nom : " + nom + "\n" +
+				"Prenom " + prenom + "\n" +
 				"PtsVie : " + ptsVie + "\n" + 
-				
-				
+				"PtsAction : " + ptsAction + "\n "
 				);
 	}
+	
 	public void cri(){
 		System.out.println("Merci de m'avoir invoque !");
 	}
+
+	
 	
 }

@@ -17,14 +17,18 @@ public class Soigneur extends Personnage implements Healer {
 	@Override
 	public void cri() {
 		super.cri();
-		System.out.println("Avec moi vous ne mourrez pas !");
+		System.out.println(" Vous avez besoin d'un pansement ?");
 	}
 
 	@Override
-	public void soigner() {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	
+	public int soigner(Personnage lanceur) {
+		System.out.println(" sortilege utilise : 'SANCTUM POWER HEALIUM !' ");
+		int soin = 45;
+		int ptsVieHealed = lanceur.ptsVie + soin;
+		ptsAction -= 1;
+		System.out.println(
+				nom + " s'est soigne de " + soin + " points de vie et elle/il a maintenant " + ptsVieHealed + " points de vie");
+		lanceur.ptsVie = ptsVieHealed;
+		return ptsVieHealed;
+	};
 }

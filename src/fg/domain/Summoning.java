@@ -2,6 +2,9 @@ package fg.domain;
 
 import fg.models.*;
 
+import java.util.Random;
+import java.util.random.*;
+
 public class Summoning {
 
 	public static void main(String[] args) {
@@ -44,12 +47,58 @@ tab[0].attaquer();
 		}
 		*/
 		
-		Guerrier Garen = new Guerrier("Humain", "Garen", "Demacia", 200, 10);
-		Guerrier Darius = new Guerrier("Humain", "Darius", "Noxus", 300, 10);
+		// généreur 3 chiffres randoms 
+		// le premier entre 0 et 4 pour savoir qui attaque  
+		// le deuxième entre 0 et 4 pour savoir qui défend 
+		// un troisième entre 0 1 pour le mage s'il attaque ou s'il se soigne 
 		
-		Garen.attaquer(Darius);
-		Darius.stats();
-		Garen.stats();
-	
+		
+		
+		
+	    Personnage[] tab = new Personnage[5];
+		tab[0] = new Guerrier("Humain", "Garen", "Demacia", 200, 10);
+		tab[1] = new Guerrier("Humain", "Darius", "Noxus", 300, 10);
+		tab[2] = new Mage("Slime", "Saint", "Slime-sama", 400, 10); 
+		tab[3] = new Mage("Ninja", "Uzumaki", "Naruto", 150, 10);
+		tab[4] = new Soigneur("Chevre", "Soraka", "La banane", 250, 10);
+		
+		Random r = new Random();
+		
+	    Personnage adversaire = tab[r.nextInt(5)];
+	    Personnage lanceur = tab[r.nextInt(5)];
+	    
+	    System.out.println(lanceur.getNom());
+	    System.out.println(adversaire.getNom());
+	    
+	    while( lanceur == adversaire) {
+	    	adversaire = tab[r.nextInt(5)];  
+	  } 
+	    System.out.println(lanceur.getNom());
+	    System.out.println(adversaire.getNom());
+	    
+	    int tour = 0;
+	    
+	    while ((lanceur.getptsAction() > 0) || (adversaire.getptsAction() > 0)) {
+	    	
+	    	tour = tour + 1;
+	    	System.out.println("vous etes au tour(s) " + tour);
+	    
+	    	System.out.println(lanceur.getNom());
+		    System.out.println(adversaire.getNom());
+	    	
+	    	if (lanceur instanceof Berseker) {
+		    	((Berseker) lanceur).attaquer(adversaire);
+		    	} else if (lanceur instanceof Healer) {
+		    		((Healer) lanceur).soigner(lanceur);
+		    	}
+	    	Personnage tmp = adversaire; 
+	    	adversaire = lanceur; 
+	    	lanceur = tmp;
+	    }
+	    
+	    
+	    
+		
+		
 	}
 }

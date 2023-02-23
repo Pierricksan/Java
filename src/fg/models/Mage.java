@@ -21,14 +21,30 @@ public class Mage extends Personnage implements Berseker, Healer{
 	}
 
 	@Override
-	public void soigner(int ptsVie) {
-		// TODO Auto-generated method stub
-		ptsVie 
-	}
+	public int soigner(Personnage lanceur) {
+		System.out.println(" sortilege utilise : 'Avec moi vous ne mourrez pas !' ");
+		int soin = 30;
+		int ptsVieHealed = lanceur.ptsVie + soin;
+		ptsAction -= 1;
+		System.out.println(
+				nom + " s'est soigne de " + soin + " points de vie et elle/il a maintenant " + ptsVieHealed + " points de vie");
+		lanceur.ptsVie = ptsVieHealed;
+		return ptsVieHealed;
+	};
 
 	@Override
-	public void attaquer() {
-		// TODO Auto-generated method stub
-		
-	}
+	public int attaquer(Personnage adversaire) {
+		System.out.println(" sortilege utilise : EXPLOSION ! ");
+		int attaque = 80;
+		int ptsVieRestant = adversaire.ptsVie - attaque;
+		ptsAction -= 1;
+		System.out.println( 
+				nom + " a inflige a " + adversaire.getNom() + 
+				" une attaque a " + attaque + 
+				" il lui reste " + ptsVieRestant + " " + 
+				nom + " a " + ptsAction + " point(s) d'action restant(s)");
+		adversaire.ptsVie = ptsVieRestant;
+		return ptsVieRestant;
+	};
+	
 }
