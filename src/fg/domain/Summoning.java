@@ -7,6 +7,25 @@ import java.util.random.*;
 
 public class Summoning {
 
+
+	public static void affichageWelcome(
+			String lanceurNom, 
+			String lanceurPrenom, 
+			String adversaireNom, 
+			String adversairePrenom) {
+		System.out.println(" ______ BIENVENUE DANS L'ARENE ______ \n vous assistez au plus grand duel de l'histoire \n _________________ \n \n" 
+	    		+ adversaireNom + " " + adversairePrenom + "\n	- VS - \n" 
+	    		+ lanceurNom + " " + lanceurPrenom 
+	    		+ "\n _____  _____ \n"
+  	    		);
+	};
+	
+	public static void simulationCombat() {
+		
+		
+	};
+	
+	
 	public static void main(String[] args) {
 		
 		// générer 3 chiffres randoms 
@@ -15,12 +34,14 @@ public class Summoning {
 		// un troisième entre 0 1 pour le mage s'il attaque ou s'il se soigne 
 		
 		// Initialisation des personnages
-	    Personnage[] tab = new Personnage[5];
-		tab[0] = new Guerrier("Humain", "Garen", "Demacia", 600, 10);
-		tab[1] = new Guerrier("Humain", "Darius", "Noxus", 500, 10);
-		tab[2] = new Mage("Slime", "Slime", "Sama", 450, 10); 
-		tab[3] = new Mage("Ninja", "Uzumaki", "Naruto", 450, 10);
-		tab[4] = new Soigneur("Chevre", "Soraka", "La banane", 300, 10);
+	    Personnage[] tab = {
+	    		new Guerrier("Humain", "Garen", "Demacia", 600, 10),
+	    		new Guerrier("Humain", "Darius", "Noxus", 500, 10),
+	    		new Mage("Slime", "Slime", "Sama", 450, 10),
+	    		new Mage("Ninja", "Uzumaki", "Naruto", 450, 10),
+	    		new Soigneur("Chevre", "Soraka", "La banane", 300, 10)
+	    };
+		
 		
 		// initialisation des valeurs randoms/aléatoires
 		// utilisation d'une class Math random
@@ -30,20 +51,15 @@ public class Summoning {
 	    Personnage adversaire = tab[r.nextInt(5)];
 	    Personnage lanceur = tab[r.nextInt(5)];
 	    
-	    
-	    
-	    
 	    // vérification des adversaires et lanceurs pour l'initialisation
 	    while( lanceur == adversaire) {
 	    	adversaire = tab[r.nextInt(5)];  
 	    } 
-	    
 	    // ANNONCE DEBUT DU JEU 
-	    System.out.println(" ______ BIENVENUE DANS L'ARENE ______ \n vous assistez au plus grand duel de l'histoire \n _________________ \n \n" 
-	    		+ adversaire.getNom() + " " + adversaire.getPrenom() + "\n	- VS - \n" 
-	    		+ lanceur.getNom() + " " + lanceur.getPrenom() 
-	    		+ "\n _____  _____ \n"
-  	    		);
+	    affichageWelcome(lanceur.getNom(), 
+	    				lanceur.getPrenom(),
+	    				adversaire.getNom(),
+	    				adversaire.getPrenom());
 	    
 	    // simulation d'un combat 1vs1 avec une boucle while
 	    while (((lanceur.getPtsVie() > 0) && (adversaire.getPtsVie() > 0))) {
