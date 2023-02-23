@@ -22,7 +22,7 @@ public class Soigneur extends Personnage implements Healer {
 
 	@Override
 	public int soigner(Personnage lanceur) {
-		System.out.println(" sortilege utilise : 'SANCTUM POWER HEALIUM !' ");
+		System.out.println(" ____ soin invoque : 'SANCTUM POWER HEALIUM !' ");
 		int soin = 45;
 		int ptsVieHealed = lanceur.ptsVie + soin;
 		ptsAction -= 1;
