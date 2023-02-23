@@ -19,9 +19,9 @@ public class Guerrier extends Personnage implements Berseker {
 		ptsAction -= 1;
 		System.out.println( 
 				nom + " a inflige a " + adversaire.getNom() + 
-				" une attaque a " + attaque + 
-				" il lui reste " + ptsVieRestant + 
-				nom + " a " + ptsAction + " point(s) d'action restant(s)");
+				" une attaque a " + attaque + " de dégats \n " +
+				adversaire.getNom() + " a " + ptsVieRestant + " HP \n" + 
+				nom + " a " + ptsAction + " point(s) d'action restant(s) \n");
 		adversaire.ptsVie = ptsVieRestant;
 		return ptsVieRestant;
 	};

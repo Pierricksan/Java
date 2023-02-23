@@ -67,33 +67,74 @@ tab[0].attaquer();
 	    Personnage adversaire = tab[r.nextInt(5)];
 	    Personnage lanceur = tab[r.nextInt(5)];
 	    
-	    System.out.println(lanceur.getNom());
-	    System.out.println(adversaire.getNom());
+	   // System.out.println(lanceur.getNom());
+	   //System.out.println(adversaire.getNom());
 	    
 	    while( lanceur == adversaire) {
 	    	adversaire = tab[r.nextInt(5)];  
 	  } 
-	    System.out.println(lanceur.getNom());
-	    System.out.println(adversaire.getNom());
+	   // System.out.println(" ---- le lanceur de l'attaque est " + lanceur.getNom());
+	   // System.out.println(" ---- l'adversaire de l'attaque est : " + adversaire.getNom());
 	    
 	    int tour = 0;
 	    
-	    while ((lanceur.getptsAction() > 0) || (adversaire.getptsAction() > 0)) {
+	   
+	    /*
+	    
+	     
+	    do {
+	    	tour = tour + 1;
+	    	System.out.println("vous etes au tour(s) " + tour + "\nPour ce tour : ");
+	    	System.out.println(" ---- le lanceur de l'attaque est  : " + lanceur.getNom());
+		    System.out.println(" ---- l'adversaire de l'attaque est : " + adversaire.getNom());
+	    	
+	    	if (lanceur instanceof Berseker) {
+		    	((Berseker) lanceur).attaquer(adversaire);
+		    	} else if (lanceur instanceof Healer) {
+		    		((Healer) lanceur).soigner(lanceur);
+		    	};
+	    	
+	    	Personnage tmp = adversaire; 
+	    	adversaire = lanceur; 
+	    	lanceur = tmp;
+	    	
+	    } while (((lanceur.getPtsVie() >= 0) && (adversaire.getPtsVie() >= 0)));
+	    
+	    
+	   
+	    */
+	    
+	    while (((lanceur.getPtsVie() > 0) && (adversaire.getPtsVie() > 0))) {
 	    	
 	    	tour = tour + 1;
-	    	System.out.println("vous etes au tour(s) " + tour);
-	    
-	    	System.out.println(lanceur.getNom());
-		    System.out.println(adversaire.getNom());
+	    	System.out.println("vous etes au tour(s) " + tour + "\nPour ce tour : ");
+	    	System.out.println(" ---- le lanceur de l'attaque est  : " + lanceur.getNom());
+		    System.out.println(" ---- l'adversaire de l'attaque est : " + adversaire.getNom());
 	    	
 	    	if (lanceur instanceof Berseker) {
 		    	((Berseker) lanceur).attaquer(adversaire);
 		    	} else if (lanceur instanceof Healer) {
 		    		((Healer) lanceur).soigner(lanceur);
 		    	}
+	    	
 	    	Personnage tmp = adversaire; 
 	    	adversaire = lanceur; 
 	    	lanceur = tmp;
+	    	
+	    	
+	    	if (adversaire.getPtsVie() <= 0) {
+	    		System.out.println("l'adversaire " + 
+	    				adversaire.getNom() + " " + 
+	    				adversaire.getPrenom() + 
+	    				" a ete defait");
+	    		System.out.println(lanceur.getNom() + " " + lanceur.getPrenom() + " a vaincu !" );
+	    	} else {
+	    		System.out.println("le lanceur " + 
+	    				lanceur.getNom() + " " + 
+	    				lanceur.getPrenom() + 
+	    				" a ete defait");
+	    		System.out.println(adversaire.getNom() + " " + adversaire.getPrenom() + " a vaincu !" );
+	    	}
 	    }
 	    
 	    
