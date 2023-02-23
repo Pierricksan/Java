@@ -60,7 +60,7 @@ public class Summoning {
             System.out.println(" ---- Attaquant  : " + lanceur.getNom());
             System.out.println(" ---- Defenseur : " + adversaire.getNom());
             // vérification du taux d'énergie 
-            /*
+            
             if (lanceur.getptsAction() == 0) {
                 System.out.println(lanceur.getNom() + " " + lanceur.getPrenom() + " n'a plus de points d'action, il est trop fatigue !\n"
                         + "Il passe son tour !!");
@@ -78,10 +78,9 @@ public class Summoning {
                     ((Healer) lanceur).soigner(lanceur);
                 }
             }
-            */
             
          // simulation d'attaque ou de soin
-           
+            /*
             switch (lanceur.getClass().getSimpleName()) {
                 case "Mage":
                     int actionMage = r.nextInt(2) + 1;
@@ -101,9 +100,9 @@ public class Summoning {
                     System.out.println("Classe inconnue.");
                     break;
             }
+            */
             
-            
-            
+          
             if (adversaire.getPtsVie() <= 0) {
             	System.out.println("! FINISH HIM ! \n FATALITY " + adversaire.getNom() + " ne se releve pas !");
                 System.out.println("\n" + adversaire.getNom() + " " + adversaire.getPrenom() + " a ete vaincu !" );
