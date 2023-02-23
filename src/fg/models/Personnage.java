@@ -1,6 +1,6 @@
 package fg.models;
 
-public class Personnage {
+public abstract class Personnage {
 
 	protected String nom, prenom, race;
 	protected int ptsVie, ptsAction;

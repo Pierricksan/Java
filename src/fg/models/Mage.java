@@ -48,5 +48,6 @@ public class Mage extends Personnage implements Berseker, Healer{
 		adversaire.ptsVie = ptsVieRestant;
 		return ptsVieRestant;
 	};
+
 	
 }

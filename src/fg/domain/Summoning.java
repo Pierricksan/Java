@@ -7,7 +7,6 @@ import java.util.random.*;
 
 public class Summoning {
 
-
 	public static void affichageWelcome(
 			String lanceurNom, 
 			String lanceurPrenom, 
@@ -19,12 +18,6 @@ public class Summoning {
 	    		+ "\n _____  _____ \n"
   	    		);
 	};
-	
-	public static void simulationCombat() {
-		
-		
-	};
-	
 	
 	public static void main(String[] args) {
 		
@@ -41,7 +34,6 @@ public class Summoning {
 	    		new Mage("Ninja", "Uzumaki", "Naruto", 450, 10),
 	    		new Soigneur("Chevre", "Soraka", "La banane", 300, 10)
 	    };
-		
 		
 		// initialisation des valeurs randoms/aléatoires
 		// utilisation d'une class Math random
@@ -68,6 +60,7 @@ public class Summoning {
             System.out.println(" ---- Attaquant  : " + lanceur.getNom());
             System.out.println(" ---- Defenseur : " + adversaire.getNom());
             // vérification du taux d'énergie 
+            /*
             if (lanceur.getptsAction() == 0) {
                 System.out.println(lanceur.getNom() + " " + lanceur.getPrenom() + " n'a plus de points d'action, il est trop fatigue !\n"
                         + "Il passe son tour !!");
@@ -85,8 +78,34 @@ public class Summoning {
                     ((Healer) lanceur).soigner(lanceur);
                 }
             }
+            */
+            
+         // simulation d'attaque ou de soin
+           
+            switch (lanceur.getClass().getSimpleName()) {
+                case "Mage":
+                    int actionMage = r.nextInt(2) + 1;
+                    if (actionMage == 1) {
+                        ((Berseker) lanceur).attaquer(adversaire);
+                    } else {
+                        ((Healer) lanceur).soigner(lanceur);
+                    }
+                    break;
+                case "Guerrier":
+                    ((Berseker) lanceur).attaquer(adversaire);
+                    break;
+                case "Soigneur":
+                    ((Healer) lanceur).soigner(lanceur);
+                    break;
+                default:
+                    System.out.println("Classe inconnue.");
+                    break;
+            }
+            
+            
+            
             if (adversaire.getPtsVie() <= 0) {
-            	System.out.println("LE COUP A ETE FATAL POUR " + adversaire.getNom() + " qui ne se releve pas !");
+            	System.out.println("! FINISH HIM ! \n FATALITY " + adversaire.getNom() + " ne se releve pas !");
                 System.out.println("\n" + adversaire.getNom() + " " + adversaire.getPrenom() + " a ete vaincu !" );
                 System.out.println(lanceur.getNom() + " " + lanceur.getPrenom() + " est le grand gagnant !" );
                 break;
