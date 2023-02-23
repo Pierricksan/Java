@@ -13,15 +13,14 @@ public class Guerrier extends Personnage implements Berseker {
 	
 	@Override
 	public int attaquer(Personnage adversaire) {
-		System.out.println("prends donc mon Tourbilol");
+		System.out.println(nom + " : 'Prends donc mon Tourbilol' ");
 		int attaque = 125;
 		int ptsVieRestant = adversaire.ptsVie - attaque;
 		ptsAction -= 1;
 		System.out.println( 
-				nom + " a inflige a " + adversaire.getNom() + 
-				" une attaque a " + attaque + " de dégats \n " +
-				adversaire.getNom() + " a " + ptsVieRestant + " HP \n" + 
-				nom + " a " + ptsAction + " point(s) d'action restant(s) \n");
+				nom + " a inflige " + attaque + " de degats a "+ adversaire.getNom() + "!\n"
+				+ "Il reste a " + adversaire.getNom() + ", " + ptsVieRestant + " point de vie \n" 
+				+ nom + " a " + ptsAction + " point(s) d'action restant(s) \n");
 		adversaire.ptsVie = ptsVieRestant;
 		return ptsVieRestant;
 	};
@@ -32,8 +31,5 @@ public class Guerrier extends Personnage implements Berseker {
 		super.cri();
 		System.out.println("Je serai votre bouclier ! Pour Demacia ");
 		
- }
-
-	
-
+	}
 }

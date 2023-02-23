@@ -22,31 +22,29 @@ public class Mage extends Personnage implements Berseker, Healer{
 
 	@Override
 	public int soigner(Personnage lanceur) {
-		System.out.println(" sortilege utilise : 'Avec moi vous ne mourrez pas !' ");
+		System.out.println(nom + " : 'GUERISON !' ");
 		int soin = 30;
 		int ptsVieHealed = lanceur.ptsVie + soin;
 		ptsAction -= 1;
 		System.out.println(
-				nom + " s'est soigne de " + soin + " points de vie et elle/il a maintenant " 
-						+ ptsVieHealed + " points de vie \n" + 
-						nom + " a " + ptsAction + " point(s) d'action restant(s) \n");
+				nom + " s'est soigne de " + soin + " points de vie et a maintenant " 
+				+ ptsVieHealed + " points de vie \n" + 
+				nom + " a " + ptsAction + " point(s) d'action restant(s) \n");
 		lanceur.ptsVie = ptsVieHealed;
 		return ptsVieHealed;
 	};
 
 	@Override
 	public int attaquer(Personnage adversaire) {
-		System.out.println(" sortilege utilise : EXPLOSION ! ");
+		System.out.println(nom + " : 'EXPLOSION !' ");
 		int attaque = 80;
 		int ptsVieRestant = adversaire.ptsVie - attaque;
 		ptsAction -= 1;
 		System.out.println( 
-				nom + " a inflige a " + adversaire.getNom() + 
-				" une attaque a " + attaque + " de dégats \n " +
-				adversaire.getNom() + " a " + ptsVieRestant + " HP \n" + 
-				nom + " a " + ptsAction + " point(s) d'action restant(s) \n");
+				nom + " a inflige " + attaque + " de degats a "+ adversaire.getNom() + "!\n"
+				+ "Il reste a " + adversaire.getNom() + ", " + ptsVieRestant + " point de vie \n" 
+				+ nom + " a " + ptsAction + " point(s) d'action restant(s) \n");
 		adversaire.ptsVie = ptsVieRestant;
 		return ptsVieRestant;
 	};
-	
 }
